@@ -18,9 +18,9 @@
 #  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 #  DEALINGS IN THE SOFTWARE.
 
-#from itertools import izip
-from random    import normalvariate, random
-from datetime  import timedelta, datetime
+# from itertools import izip
+from random import normalvariate, random
+from datetime import timedelta, datetime
 
 import csv
 import dateutil.parser
@@ -31,9 +31,9 @@ import json
 import re
 import threading
 
-#from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
+# from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 import http.server
-from socketserver   import ThreadingMixIn
+from socketserver import ThreadingMixIn
 
 ################################################################################
 #
@@ -47,8 +47,8 @@ MARKET_OPEN = datetime.today().replace(hour = 0, minute = 30, second = 0)
 
 # Market parms
 #       min  / max  / std
-SPD  = (2.0,   6.0,   0.1)
-PX   = (60.0,  150.0, 1)
+SPD = (2.0,   6.0,   0.1)
+PX = (60.0,  150.0, 1)
 FREQ = (12,    36,   50)
 
 # Trades
@@ -166,7 +166,7 @@ class ThreadedHTTPServer(ThreadingMixIn, http.server.HTTPServer):
     """
     allow_reuse_address = True
     def shutdown(self):
-        """ Override MRO to shutdown properly. """
+        """ Override MRO to shut down properly. """
         self.socket.close()
         http.server.HTTPServer.shutdown(self)
 
@@ -315,6 +315,6 @@ class App(object):
 
 if __name__ == '__main__':
     if not os.path.isfile('test.csv'):
-        print ("No data found, generating...")
+        print  ("No data found, generating...")
         generate_csv()
     run(App())
